@@ -14,28 +14,39 @@
 int main()
 {
 	std::unordered_map<std::string, std::function<void()>> commands = {
-			{"name", [](){
-				InteractiveShell::CommandContext context(std::make_unique<InteractiveShell::WriteMyName>());
+			{"discovery_devices", [](){
+				InteractiveShell::CommandContext context(std::make_unique<InteractiveShell::DiscoveryDevices>());
 				context.executeCommand();	
 			}},
-			{"age", [](){
-				InteractiveShell::CommandContext context(std::make_unique<InteractiveShell::WriteMyAge>());
-				context.executeCommand();
+
+			{"connect_to_device", [](){
+				InteractiveShell::CommandContext context(std::make_unique<InteractiveShell::ConnectToDevice>());
+				context.executeCommand();	
 			}},
 
-			{"location", [](){
-				InteractiveShell::CommandContext context(std::make_unique<InteractiveShell::WriteMyLocation>());
-				context.executeCommand();
+			{"disconnect_from_device", [](){
+				InteractiveShell::CommandContext context(std::make_unique<InteractiveShell::DisconnectFromDevice>());
+				context.executeCommand();	
 			}},
 
-			{"occupation", [](){
-				InteractiveShell::CommandContext context(std::make_unique<InteractiveShell::WriteMyOccupation>());
-				context.executeCommand();
+			{"send_configuration_to_device", [](){
+				InteractiveShell::CommandContext context(std::make_unique<InteractiveShell::SendConfigurationToDevice>());
+				context.executeCommand();	
 			}},
 
-			{"hobbies", [](){
-				InteractiveShell::CommandContext context(std::make_unique<InteractiveShell::WriteMyHobbies>());
-				context.executeCommand();
+			{"open_video_stream", [](){
+				InteractiveShell::CommandContext context(std::make_unique<InteractiveShell::OpenVideoStream>());
+				context.executeCommand();	
+			}},
+
+			{"open_audio_stream", [](){
+				InteractiveShell::CommandContext context(std::make_unique<InteractiveShell::OpenAudioStream>());
+				context.executeCommand();	
+			}},
+
+			{"open_media_stream", [](){
+				InteractiveShell::CommandContext context(std::make_unique<InteractiveShell::OpenMediaStream>());
+				context.executeCommand();	
 			}}
 
 		};
@@ -44,13 +55,15 @@ int main()
 	while(true)
 	{
 		std::string command;
-		std::cout << "Enter a command: ";
+		std::cout << "$> ";
 		std::cin >> command;
 		
-		if (command == "exit")
+		if (command == "exit" || getchar() == EOF)
 		{
+			std::cout << "Exiting..." << std::endl;
 			break;
 		}
+
 		
 		auto it = commands.find(command);
 		if (it != commands.end())

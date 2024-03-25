@@ -7,78 +7,55 @@
 
 namespace InteractiveShell
 {
-    class WriteMyName : public Command
+    class DiscoveryDevices : public Command
     {
-        public:
-            WriteMyName() { }
-            virtual ~WriteMyName() { }
-
-            void const operator()() override
-            {
-                std::cout << "My name is: " << "John Doe" << std::endl;
-            }
-
+    public:
+        DiscoveryDevices() = default;
+        void const operator()() override;
     };
 
-    class WriteMyAge : public Command
+    class ConnectToDevice : public Command
     {
-        public:
-            WriteMyAge() { }
-            virtual ~WriteMyAge() { }
-
-            void const operator()() override
-            {
-                std::cout << "My age is: " << 25 << std::endl;
-            }
+    public:
+        ConnectToDevice() = default;
+        void const operator()() override;
     };
 
-    class WriteMyLocation : public Command
+    class DisconnectFromDevice : public Command
     {
-        public:
-            WriteMyLocation() { }
-            virtual ~WriteMyLocation() { }
-
-            void const operator()() override
-            {
-                std::cout << "My location is: " << "New York" << std::endl;
-            }
+    public:
+        DisconnectFromDevice() = default;
+        void const operator()() override;
     };
 
-    class WriteMyOccupation : public Command
+    class SendConfigurationToDevice : public Command
     {
-        public:
-            WriteMyOccupation() { }
-            virtual ~WriteMyOccupation() { }
-
-            void const operator()() override
-            {
-                std::cout << "My occupation is: " << "Software Engineer" << std::endl;
-            }
+    public:
+        SendConfigurationToDevice() = default;
+        void const operator()() override;
     };
 
-    class WriteMyHobbies : public Command
+    class OpenVideoStream : public Command
     {
-        public:
-            WriteMyHobbies() { }
-            virtual ~WriteMyHobbies() { }
-
-            void const operator()() override
-            {
-                std::cout << "My hobbies are: " << "Reading, Writing, and Coding" << std::endl;
-            }
+    public:
+        OpenVideoStream() = default;
+        void const operator()() override;
     };
 
-    class WriteMyResume : public Command
+    class OpenAudioStream : public Command
     {
-        public:
-            WriteMyResume() { }
-            virtual ~WriteMyResume() { }
-
-            void const operator()() override
-            {
-                std::cout << "My resume is: " << "I have a Bachelor's degree in Computer Science and Engineering." << std::endl;
-            }
+    public:
+        OpenAudioStream() = default;
+        void const operator()() override;
     };
+
+    class OpenMediaStream : public Command
+    {
+    public:
+        OpenMediaStream() = default;
+        void const operator()() override;
+    };
+
 }
 
 
